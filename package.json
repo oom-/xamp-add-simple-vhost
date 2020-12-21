@@ -1,0 +1,22 @@
+{
+  "name": "xamp-add-simple-vhost",
+  "version": "1.0.0",
+  "description": "Utils to add a new vhost in the vhost conf file on a xamp install",
+  "main": "windows.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oom-/xamp-add-simple-vhost.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oom-/xamp-add-simple-vhost/issues"
+  },
+  "homepage": "https://github.com/oom-/xamp-add-simple-vhost#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
