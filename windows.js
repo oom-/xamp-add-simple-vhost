@@ -7,14 +7,14 @@ let DEFAULT = {
     HOST_FILE: "C:\\Windows\\System32\\drivers\\etc\\hosts",
     WEBSITE_FOLDER: "C:\\xampp\\htdocs\\websites",
     VHOST_FILE: "C:\\xampp\\apache\\conf\\extra\\httpd-vhosts.conf",
-    BASIC_ENTRY: "<VirtualHost *>\n\
-DocumentRoot \"@WEBSITE_FOLDER@\"\n\
-ServerName @SERVER_NAME@\n\
-<Directory \"@WEBSITE_FOLDER@>\"\n\
-Order allow,deny\n\
-Allow from all\n\
-Require all granted\n\
-</Directory>\n\
+    BASIC_ENTRY: "\n<VirtualHost *>\n\
+    DocumentRoot \"@WEBSITE_FOLDER@\"\n\
+    ServerName @SERVER_NAME@\n\
+    <Directory \"@WEBSITE_FOLDER@>\"\n\
+        Order allow,deny\n\
+        Allow from all\n\
+        Require all granted\n\
+    </Directory>\n\
 </VirtualHost>"
 };
 
@@ -46,11 +46,11 @@ Require all granted\n\
         name: 'domain',
         default: path.basename(answears.websiteroot) + ".local",
         message: "Which domain name you wish? (domain.local)",
-    },])
+    },]);
     DEFAULT.BASIC_ENTRY = DEFAULT.BASIC_ENTRY
         .replace("@WEBSITE_FOLDER@", answears.websiteroot)
         .replace("@WEBSITE_FOLDER@", answears.websiteroot)
-        .replace("@SERVER_NAME@", answears.domain);
+        .replace("@SERVER_NAME@", answears2.domain);
     let answears3 = await inquirer.prompt({
         type: 'input',
         name: 'entry',
@@ -61,7 +61,7 @@ Require all granted\n\
     console.log("Creating entry in hosts file...");
     if (fs.existsSync(answears.hosts)) {
         try {
-            fs.appendFileSync(answears.hosts, `127.0.0.1\t${answears.domain}`);
+            fs.appendFileSync(answears.hosts, `\n127.0.0.1\t${answears.domain}`);
             console.log("OK");
         }
         catch (ex) {
